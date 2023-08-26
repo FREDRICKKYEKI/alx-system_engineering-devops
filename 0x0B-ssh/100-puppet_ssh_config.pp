@@ -15,6 +15,7 @@ file { '/home/ubuntu/.ssh/config':
   content => "
     Host 35.153.17.172
       IdentityFile ~/.ssh/school
+      User ubuntu
       PasswordAuthentication no
   ",
 }
