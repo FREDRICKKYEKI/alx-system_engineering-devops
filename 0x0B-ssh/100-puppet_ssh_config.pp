@@ -8,7 +8,7 @@
 #   - Your SSH client configuration must be configured to use the private key ~/.ssh/school
 #   - Your SSH client configuration must be configured to refuse to authenticate using a password
 
-file { '/home/ubuntu/.ssh/config':
+file { '/etc/ssh/ssh_config':
   ensure  => 'file',
   owner   => 'ubuntu',
   mode    => '0600',
