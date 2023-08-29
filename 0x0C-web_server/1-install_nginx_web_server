@@ -14,11 +14,11 @@
 #     - You can’t use systemctl for restarting nginx
 
 # install nginx
-apt-get -y update
-apt-get -y install nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
 
 # configure server
-echo "Hello World!" > /var/www/html/index.nginx-debian.html
+sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
 
 # start server
-service nginx start
+sudo service nginx start
