@@ -15,6 +15,10 @@
 sudo apt-get -y update
 sudo apt-get -y install nginx
 
+# change owner to current user to write
+sudo chown -R "$USER":"$USER" /var/www/html/
+sudo chown -R "$USER":"$USER" /etc/nginx/sites-available/
+
 # configure server
 sudo echo "Hello World!" | sudo tee /var/www/html/index.nginx-debian.html
 sudo sed -i "s/server_name _;/server_name _;\n\trewrite ^\/redirect_me https:\/\/github.com\/FREDRICKKYEKI permanent;/" /etc/nginx/sites-available/default
