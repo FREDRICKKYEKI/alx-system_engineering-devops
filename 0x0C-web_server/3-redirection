@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-
 # Configure your Nginx server so that /redirect_me is redirecting to another page.
-
 # Requirements:
 #     - The redirection must be a “301 Moved Permanently”
 #     - You answer file should be a Bash script containing commands to
