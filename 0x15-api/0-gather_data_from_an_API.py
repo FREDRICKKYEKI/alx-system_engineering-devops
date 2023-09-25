@@ -46,4 +46,3 @@ if __name__ == "__main__":
     print(result)
     for task in completed_tasks:
         print("\t", task.get("title"))
-

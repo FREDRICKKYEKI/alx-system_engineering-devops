@@ -29,9 +29,7 @@ if __name__ == "__main__":
     todos_json = todos_resp.json()
     users_json = users_resp.json()
 
-
     filename = "todo_all_employees.json"
-
 
     user_dict = {}
     for user in users_json:
