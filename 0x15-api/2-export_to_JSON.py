@@ -25,7 +25,7 @@ if __name__ == "__main__":
     todo_resp = requests.get(todo_url)
     todo_json = todo_resp.json()
 
-    filename = "USER_ID.json"
+    filename = f"{uid}.json"
 
     tasks_list = []
     for task in todo_json:

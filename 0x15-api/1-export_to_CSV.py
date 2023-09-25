@@ -23,7 +23,7 @@ if __name__ == "__main__":
     todo_resp = requests.get(todo_url)
     todo_json = todo_resp.json()
 
-    filename = "USER_ID.csv"
+    filename = f"{uid}.csv"
     with open(filename, "w") as f:
         csv_writer = csv.writer(f, quoting=csv.QUOTE_ALL)
         for todo in todo_json:
