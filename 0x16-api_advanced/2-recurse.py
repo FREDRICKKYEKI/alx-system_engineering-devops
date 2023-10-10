@@ -48,7 +48,7 @@ def recurse(subreddit, hot_list=None, after=None):
 
     if response.status_code == 200:
         data = response.json()
-        hot_posts = dic['data']['children']
+        hot_posts = data['data']['children']
         add_title(hot_list, hot_posts)
         after = data["data"]["after"]
         if not after:
