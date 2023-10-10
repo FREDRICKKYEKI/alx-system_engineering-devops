@@ -21,20 +21,37 @@ recursive function. :)
 import requests
 
 
-def recurse(subreddit, hot_list=[], after=""):
+def add_title(hot_list, hot_posts):
+    """ Adds item into a list """
+    if len(hot_posts) == 0:
+        return
+    hot_list.append(hot_posts[0]['data']['title'])
+    hot_posts.pop(0)
+    add_title(hot_list, hot_posts)
+
+
+def recurse(subreddit, hot_list=None, after=None):
     """Returns a list of all hot articles for a given subreddit"""
+    if hot_list is None:
+        hot_list = []
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
-    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-    params = {"after": after}
-    response = requests.get(url, headers=headers, params=params,
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+    }
+    params = {
+        "after": after
+    }
+    response = requests.get(url,
+                            headers=headers,
+                            params=params,
                             allow_redirects=False)
+
     if response.status_code == 200:
         data = response.json()
-        for post in data["data"]["children"]:
-            hot_list.append(post["data"]["title"])
+        hot_posts = dic['data']['children']
+        add_title(hot_list, hot_posts)
         after = data["data"]["after"]
-        if after is None:
+        if not after:
             return hot_list
-        return recurse(subreddit, hot_list, after)
-    else:
-        return None
+        return recurse(subreddit, hot_list=hot_list, after=after)
+    return None
