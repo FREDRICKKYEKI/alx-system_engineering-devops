@@ -1,0 +1,18 @@
+[Unit]
+Description=Gunicorn instance to serve the HBNB app
+
+[Service]
+ExecStart=/home/ubuntu/.local/bin/gunicorn --bind 0.0.0.0:5003 -w 3 web_dynamic.2-hbnb:app
+WorkingDirectory=/home/ubuntu/AirBnB_clone_v4
+User=ubuntu
+Group=ubuntu
+Restart=always
+RestartSec=2
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=gunicorn
+Environment=PYTHONPATH=/home/ubuntu/AirBnB_clone_v4/.env
+
+[Install]
+WantedBy=multi-user.target
+

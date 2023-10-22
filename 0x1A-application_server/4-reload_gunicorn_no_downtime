@@ -1,0 +1,17 @@
+#!/bin/bash
+# This script reloads Gunicorn gracefully
+
+# Define the Gunicorn service name
+SERVICE="gunicorn.service"
+
+# Check if the Gunicorn service is active
+if ! systemctl is-active --quiet $SERVICE; then
+    echo "The $SERVICE is not active."
+    exit 1
+fi
+
+# Reload Gunicorn gracefully by sending the HUP signal
+systemctl reload $SERVICE
+
+# Verify the status of Gunicorn after reloading
+systemctl status $SERVICE
